@@ -18,13 +18,13 @@ public class StateMachine {
             case Stage_Four:
                 currState = State.Stage_Seven;
                 break;
+            case Stage_Five:
+                currState = State.Stage_Six;
+                break;
+            case Stage_Six:
+                currState = State.Stage_Seven;
+                break;
             case Stage_Seven:
-                currState = State.Stage_Eight;
-                break;
-            case Stage_Eight:
-                currState = State.Stage_Nine;
-                break;
-            case Stage_Nine:
                 currState = State.Game_Over;
                 break;
             default:
