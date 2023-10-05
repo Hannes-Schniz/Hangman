@@ -7,8 +7,6 @@ public class Game {
 
     private static char[] currWord;
 
-    private static boolean hit = false;
-
     private static List<Character> guesses = new ArrayList<Character>();
 
     public static void setup() {
@@ -30,11 +28,10 @@ public class Game {
             try {
                 char guess = Terminal.getChar();
                 guesses.add(guess);
-                updateCurrWord(guess);
+                boolean hit = updateCurrWord(guess);
                 if (!hit) {
                     StateMachine.nextState();
                 }
-                hit = false;
             } catch (Exception e) {
                 start();
             }
@@ -50,13 +47,15 @@ public class Game {
         }
     }
 
-    private static void updateCurrWord(char guess) {
+    private static boolean updateCurrWord(char guess) {
+boolean returnvalue = false;
         for (int i = 0; i < word.length; i++) {
             if (word[i] == guess) {
                 currWord[i] = word[i];
-                hit = true;
+                returnvalue = true;
             }
         }
+return returnvalue;
     }
 
 }
