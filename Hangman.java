@@ -10,7 +10,7 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_1 = {
+        public static final String[] HANGMAN_8 = {
                         "  +---+",
                         "  |   |",
                         "  O   |",
@@ -20,7 +20,7 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_2 = {
+        public static final String[] HANGMAN_7 = {
                         "  +---+",
                         "  |   |",
                         "  O   |",
@@ -30,7 +30,7 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_3 = {
+        public static final String[] HANGMAN_6 = {
                         "  +---+",
                         "  |   |",
                         "  O   |",
@@ -40,27 +40,27 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_4 = {
-                        "  +---+",
-                        "  |   |",
-                        "  O   |",
-                        "  |   |",
-                        "      |",
-                        "      |",
-                        "========="
-        };
-
         public static final String[] HANGMAN_5 = {
                         "  +---+",
                         "  |   |",
                         "  O   |",
+                        "  |   |",
+                        "      |",
+                        "      |",
+                        "========="
+        };
+
+        public static final String[] HANGMAN_4 = {
+                        "  +---+",
+                        "  |   |",
+                        "  O   |",
                         "      |",
                         "      |",
                         "      |",
                         "========="
         };
 
-        public static final String[] HANGMAN_6 = {
+        public static final String[] HANGMAN_3 = {
                         "  +---+",
                         "  |   |",
                         "      |",
@@ -70,7 +70,7 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_7 = {
+        public static final String[] HANGMAN_2 = {
                         "      ",
                         "      ",
                         "      ",
@@ -80,7 +80,7 @@ public class Hangman {
                         "========="
         };
 
-        public static final String[] HANGMAN_8 = {
+        public static final String[] HANGMAN_1 = {
                         "      ",
                         "      ",
                         "      ",
