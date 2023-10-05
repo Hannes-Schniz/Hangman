@@ -6,11 +6,10 @@ import java.util.Scanner;
 
 public class Terminal {
 
-    private static BufferedReader reader = new BufferedReader(
+    private static final BufferedReader reader = new BufferedReader(
             new InputStreamReader(System.in));
 
     public static char getChar() throws ParseException {
-        // reads a input from console
         try {
             System.out.println("Enter a character: ");
             String input = readline();
