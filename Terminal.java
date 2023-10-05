@@ -56,12 +56,6 @@ public class Terminal {
         System.out.println();
     }
 
-    public static void printUnderscore(int number) {
-        for (int i = 0; i < number; i++) {
-            System.out.print("_ ");
-        }
-    }
-
     private static String readline() {
         try {
             return reader.readLine();
