@@ -1,3 +1,5 @@
+package src.inputOutput;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.text.ParseException;
@@ -30,7 +32,7 @@ public class Terminal {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to Hangman!");
+        System.out.println("Welcome to src.data.Hangman!");
     }
 
     public static void printWin() {

@@ -1,3 +1,5 @@
+package src.data;
+
 public class Hangman {
 
         public static final String[] HANGMAN = {

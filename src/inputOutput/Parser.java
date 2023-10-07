@@ -1,3 +1,5 @@
+package src.inputOutput;
+
 public class Parser {
 
     public static char[] parseCaps (char[] input){

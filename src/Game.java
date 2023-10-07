@@ -1,3 +1,11 @@
+package src;
+
+import src.gamestate.State;
+import src.gamestate.StateMachine;
+import src.inputOutput.Parser;
+import src.inputOutput.Reader;
+import src.inputOutput.Terminal;
+
 import java.util.ArrayList;
 import java.util.List;
 

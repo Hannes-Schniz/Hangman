@@ -1,9 +1,11 @@
+package src.inputOutput;
+
 import java.io.*;
 import java.util.Random;
 
 public class Reader {
 
-    private static File file = new File(new File("").getAbsolutePath().concat("/words.txt"));
+    private static File file = new File(new File("").getAbsolutePath().concat("/rescources/words.txt"));
 
     private static int seed;
 
@@ -35,6 +37,6 @@ public class Reader {
     }
 
     public static void switchToGerman() {
-        file = new File(new File("").getAbsolutePath().concat("/wordlist-german.txt"));
+        file = new File(new File("").getAbsolutePath().concat("/rescources/wordlist-german.txt"));
     }
 }

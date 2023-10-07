@@ -1,3 +1,5 @@
+package src.gamestate;
+
 public class StateMachine {
     static private State currState = State.Setup;
 
