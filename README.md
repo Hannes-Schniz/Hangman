@@ -1,5 +1,5 @@
-# src.data.Hangman
-A simple src.data.Hangman game
+# Hangman
+A simple Hangman game
 
 Works best on Consoles that support ANSI escape codes!
 
