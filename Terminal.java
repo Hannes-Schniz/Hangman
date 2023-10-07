@@ -2,18 +2,22 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Terminal {
 
     private static final BufferedReader reader = new BufferedReader(
             new InputStreamReader(System.in));
 
-    public static char getChar() throws ParseException {
+    public static char getGuess(List<Character> guesses) throws ParseException {
         try {
-            System.out.println("Enter a character: ");
+            System.out.println("Enter a guess: ");
             String input = readline();
-            return input.charAt(0);
+            char guess = Parser.parseCaps(input.charAt(0));
+            if (guesses.contains(guess)) {
+                System.out.println("You already guessed that!");
+                getGuess(guesses);
+            }
+            return guess;
         } catch (Exception e) {
             throw new ParseException("Error reading input", 0);
         }
@@ -29,9 +33,24 @@ public class Terminal {
         System.out.println("Welcome to Hangman!");
     }
 
-    public static char[] getWord() {
-        System.out.println("Enter a word: ");
-        return readline().toCharArray();
+    public static void printWin() {
+        System.out.println("You win!");
+    }
+
+    public static void printLose() {
+        System.out.println("You lose!");
+    }
+
+    public static void revealWord(char[] word) {
+        System.out.println("The word was: ");
+        for (char c : word) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+    }
+
+    public static void printException(Exception e) {
+        System.out.println("A error Occured:\n" + e);
     }
 
     public static void clearTerminal() {
@@ -53,6 +72,12 @@ public class Terminal {
             System.out.print(c + " ");
         }
         System.out.println();
+    }
+
+    public static boolean restart() {
+        System.out.println("Would you like to play again? (y/n)");
+        String input = readline();
+        return input.equals("y");
     }
 
     private static String readline() {

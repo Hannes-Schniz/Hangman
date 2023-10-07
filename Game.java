@@ -7,13 +7,18 @@ public class Game {
 
     private static char[] currWord;
 
-    private static List<Character> guesses = new ArrayList<Character>();
+    private static final List<Character> guesses = new ArrayList<>();
 
     public static void setup() {
         StateMachine.reset();
+        guesses.clear();
         Terminal.clearTerminal();
         Terminal.printWelcome();
-        word = Terminal.getWord();
+       try {
+           word = Parser.parseCaps(Reader.getRandomLine().toCharArray());
+       } catch (Exception e) {
+           Terminal.printException(e);
+       }
         initWord();
     }
 
@@ -26,7 +31,7 @@ public class Game {
             Terminal.printCurrentWord(currWord);
             Terminal.printGuesses(guesses);
             try {
-                char guess = Terminal.getChar();
+                char guess = Terminal.getGuess(guesses);
                 guesses.add(guess);
                 boolean hit = updateCurrWord(guess);
                 if (!hit) {
@@ -35,9 +40,18 @@ public class Game {
             } catch (Exception e) {
                 start();
             }
-        }
-        Terminal.printHangman(StateMachine.getState().hangman);
 
+            if (isEqual(word, currWord)) {
+                break;
+            }
+        }
+        StateMachine.endGame();
+        printResult();
+        Terminal.revealWord(word);
+
+        if (Terminal.restart()) {
+            start();
+        }
     }
 
     private static void initWord() {
@@ -48,14 +62,31 @@ public class Game {
     }
 
     private static boolean updateCurrWord(char guess) {
-boolean returnvalue = false;
+        boolean returnvalue = false;
         for (int i = 0; i < word.length; i++) {
             if (word[i] == guess) {
                 currWord[i] = word[i];
                 returnvalue = true;
             }
         }
-return returnvalue;
+        return returnvalue;
+    }
+
+    private static boolean isEqual(char[] inputOne, char[] inputTwo) {
+        for (int i = 0; i < inputOne.length; i++) {
+            if (inputOne[i] != inputTwo[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void printResult() {
+        if (StateMachine.getState() == State.Win) {
+            Terminal.printWin();
+        } else {
+            Terminal.printLose();
+        }
     }
 
 }
