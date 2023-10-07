@@ -3,18 +3,38 @@ import java.util.Random;
 
 public class Reader {
 
-    private static final File file = new File(new File("").getAbsolutePath().concat("/words.txt"));
+    private static File file = new File(new File("").getAbsolutePath().concat("/words.txt"));
+
+    private static int seed;
 
     public static String getRandomLine() throws Exception{
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        int randomNumber = new Random().nextInt(999);
+        int randomNumber = new Random(seed).nextInt(100000);
 
-        for (int i = 0; i < randomNumber; i++) {
-            br.readLine();
+        while (randomNumber > 0) {
+            String line = br.readLine();
+            if (line == null) {
+                br.close();
+                br = new BufferedReader(new FileReader(file));
+            }
+            randomNumber--;
         }
 
         return br.readLine();
+    }
+
+    public static int setSeed() {
+        seed = new Random().nextInt();
+        return seed;
+    }
+
+    public static void setSeed(int seed) {
+        Reader.seed = seed;
+    }
+
+    public static void switchToGerman() {
+        file = new File(new File("").getAbsolutePath().concat("/wordlist-german.txt"));
     }
 }

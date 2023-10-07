@@ -13,12 +13,30 @@ public class Game {
         StateMachine.reset();
         guesses.clear();
         Terminal.clearTerminal();
+        try {
+
+            if (Terminal.playAgainstAI()) {
+                Terminal.printLanguage();
+                if (Terminal.switchToGerman()) {
+                    Reader.switchToGerman();
+                }
+                if (Terminal.customSeed()) {
+                    Reader.setSeed(Terminal.selectSeed());
+                }else {
+                    Terminal.printSeed(Reader.setSeed());
+                }
+                word = Parser.parseCaps(Reader.getRandomLine().toCharArray());
+            }
+            else {
+                word = Parser.parseCaps(Terminal.getWord());
+            }
+
+        } catch (Exception e) {
+            Terminal.printException(e);
+        }
+
+
         Terminal.printWelcome();
-       try {
-           word = Parser.parseCaps(Reader.getRandomLine().toCharArray());
-       } catch (Exception e) {
-           Terminal.printException(e);
-       }
         initWord();
     }
 

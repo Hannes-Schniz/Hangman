@@ -80,6 +80,51 @@ public class Terminal {
         return input.equals("y");
     }
 
+    public static boolean switchToGerman() {
+        System.out.println("Would you like to play in German? (y/n)");
+        String input = readline();
+        return input.equals("y");
+    }
+
+    public static void printLanguage() {
+        System.out.println("Language: English");
+    }
+
+    public static void printSeed(int seed) {
+        System.out.println("Seed: " + seed);
+    }
+
+    public static int selectSeed() {
+        System.out.println("Enter a seed: ");
+        String input = readline();
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            System.out.println("Invalid seed");
+            selectSeed();
+        }
+        return -1;
+    }
+
+    public static boolean customSeed() {
+        System.out.println("Would you like to enter a custom seed? (y/n)");
+        String input = readline();
+        return input.equals("y");
+    }
+
+    public static char[] getWord() {
+        System.out.println("Enter a word: ");
+        String input = readline();
+        return Parser.parseCaps(input.toCharArray());
+
+    }
+
+    public static boolean playAgainstAI() {
+        System.out.println("Would you like to play against the AI? (y/n)");
+        String input = readline();
+        return input.equals("y");
+    }
+
     private static String readline() {
         try {
             return reader.readLine();
