@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Terminal {
 
