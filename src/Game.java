@@ -30,19 +30,17 @@ public class Game {
                 }
                 if (Terminal.customSeed()) {
                     Reader.setSeed(Terminal.selectSeed());
-                }else {
+                } else {
                     Terminal.printSeed(Reader.setSeed());
                 }
                 word = Parser.parseCaps(Reader.getRandomLine().toCharArray());
-            }
-            else {
+            } else {
                 word = Parser.parseCaps(Terminal.getWord());
             }
 
         } catch (Exception e) {
             Terminal.printException(e);
         }
-
 
         Terminal.printWelcome();
         initWord();
@@ -111,6 +109,8 @@ public class Game {
         if (StateMachine.getState() == State.Win) {
             Terminal.printWin();
         } else {
+            Terminal.clearTerminal();
+            Terminal.printHangman(StateMachine.getState().hangman);
             Terminal.printLose();
         }
     }

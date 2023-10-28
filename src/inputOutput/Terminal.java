@@ -2,7 +2,6 @@ package src.inputOutput;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.util.List;
 
 public class Terminal {
@@ -10,18 +9,18 @@ public class Terminal {
     private static final BufferedReader reader = new BufferedReader(
             new InputStreamReader(System.in));
 
-    public static char getGuess(List<Character> guesses) throws ParseException {
+    public static char getGuess(List<Character> guesses) {
         try {
             System.out.println("Enter a guess: ");
             String input = readline();
             char guess = Parser.parseCaps(input.charAt(0));
             if (guesses.contains(guess)) {
                 System.out.println("You already guessed that!");
-                getGuess(guesses);
+                guess = getGuess(guesses);
             }
             return guess;
         } catch (Exception e) {
-            throw new ParseException("Error reading input", 0);
+            return getGuess(guesses);
         }
     }
 
@@ -117,6 +116,9 @@ public class Terminal {
     public static char[] getWord() {
         System.out.println("Enter a word: ");
         String input = readline();
+        if (input == "") {
+            return getWord();
+        }
         return Parser.parseCaps(input.toCharArray());
 
     }
